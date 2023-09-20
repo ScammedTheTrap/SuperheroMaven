@@ -1,6 +1,8 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
@@ -58,6 +60,16 @@ class DatabaseTest {
         assertEquals(expectedSize, actualSize);
     }
 
+   @Test
+    void testDeleteSuperhero() {
 
+        String superheroNameToDelete = "superhero1";
+
+        boolean isDeleted = db.deleteSuperhero(superheroNameToDelete);
+
+        assertTrue(isDeleted);
+        assertNull(db.searchSuperhero(superheroNameToDelete));
+
+    }
 }
 

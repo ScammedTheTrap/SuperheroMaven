@@ -38,6 +38,19 @@ public class Database {
         }
 
     }
+    public boolean deleteSuperhero(String name) {
+
+        for (Superhero superhero : superHeroes) {
+            if (superhero.getName().equals(name)) {
+                superHeroes.remove(superhero);
+                System.out.println("Superhelten som blev slettet: " + name);
+                return true;
+            }
+        }
+        System.out.println("superhelten blev ikke slettet" + name + " mission failed!");
+        return false;
+    }
+
 
 
 }

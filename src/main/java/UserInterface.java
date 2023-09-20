@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -18,6 +19,7 @@ public class UserInterface {
     */
 
     //Void da den ikke skal returnere noget værdi, den er koblet til Main klasse --> ui.startProgram();
+
     public void startProgram() {
         System.out.println("----------Velkommen til den ultimative Superhelt program 7000!!!!!----------");
 
@@ -46,6 +48,7 @@ public class UserInterface {
             System.out.println("Indtast superheltens navn:");
 
             String name = scan.nextLine();
+            String scannerbug = scan.nextLine();
 
             System.out.println("Indtast superheltens Rigtige navn:");
 
@@ -164,9 +167,39 @@ public class UserInterface {
             }
             System.out.println("Din superhelt er blevet opdateret til følgende: ");
             System.out.println(nuværendeSuperhero);
+
+
+            System.out.println("Liste over superhelte:");
+
+            ArrayList<Superhero> superheroes = db.getSuperHeroes();
+
+            for (int i = 0; i < superheroes.size(); i++) {
+                System.out.println((i + 1) + ". " + superheroes.get(i).getName());
+            }
+
+            System.out.println("Vælg en superhelt at slette (indtast nummer):");
+
+            Scanner scanner = new Scanner(System.in);
+            int choice = scanner.nextInt();
+
+            if (choice >= 1 && choice <= superheroes.size()) {
+                Superhero superheroToDelete = superheroes.get(choice - 1);
+                boolean isDeleted = db.deleteSuperhero(superheroToDelete.getName());
+
+                if (isDeleted) {
+                    System.out.println(superheroToDelete.getName() + " blev slettet.");
+                } else {
+                    System.out.println("Sletning mislykkedes.");
+                }
+            } else {
+                System.out.println("Ugyldigt valg.");
+            }
+
         }
+
     }
 }
+
 
 
 
