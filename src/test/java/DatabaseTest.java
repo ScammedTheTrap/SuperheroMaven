@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DatabaseTest {
@@ -12,6 +13,7 @@ class DatabaseTest {
         Superhero superhero2 = new Superhero("Prince", "Vegeta", 70, false, 15000.0);
         Superhero superhero3 = new Superhero("Skaldet", "Krillin", 20, true, 1500.0);
     }
+
     // Test at søge efter en superhelt der ikke findes
     @Test
     void testSearchNoSuperheroes() {
